@@ -136,6 +136,8 @@ section{padding-block:96px}
 .eve{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
 .eve .a{grid-column:span 7;aspect-ratio:4/3}
 .eve .b{grid-column:span 5;display:grid;gap:14px;grid-template-rows:1fr 1fr}
+.eve .b .ph{position:relative;min-height:0}
+.eve .b .ph img{position:absolute;inset:0}
 .eve .c{grid-column:span 5}
 .eve .d{grid-column:span 7;aspect-ratio:16/9}
 .eve .card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:0}
@@ -199,7 +201,7 @@ section{padding-block:96px}
 .book a.plat{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;padding:18px 20px;border:1px solid var(--line);border-radius:6px;font-weight:600;transition:border-color .2s,background .2s}
 .book a.plat:hover{border-color:var(--bunk);background:color-mix(in srgb,var(--bunk) 8%,transparent)}
 .book a.plat span{font:400 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}
-.book .front{margin-top:24px;aspect-ratio:3/4;max-height:420px}
+.book .front{margin-top:24px;aspect-ratio:4/5;width:100%;max-height:440px}
 @media (max-width:860px){.find .wrap{grid-template-columns:1fr}}
 .toast{font:500 13px/1 var(--f-mono);color:var(--bunk);align-self:center}
 
