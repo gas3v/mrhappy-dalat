@@ -204,6 +204,11 @@ section{padding-block:96px}
 .book .front{margin-top:24px;aspect-ratio:4/5;width:100%;max-height:440px}
 @media (max-width:860px){.find .wrap{grid-template-columns:1fr}}
 .toast{font:500 13px/1 var(--f-mono);color:var(--bunk);align-self:center}
+.phones{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.phones a{display:flex;flex-direction:column;gap:6px;text-decoration:none;padding:16px 18px;border:1px solid var(--line);border-radius:6px;transition:border-color .2s}
+.phones a:hover{border-color:var(--bunk)}
+.phones b{font:600 20px/1.1 var(--f-display);letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:420px){.phones{grid-template-columns:1fr}}
 
 footer{padding-block:40px 48px;border-top:1px solid var(--line);color:var(--moss);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
@@ -433,6 +438,10 @@ footer .logo{color:var(--pine)}
           </a>
           <button class="btn" id="copy" type="button">Copy address</button>
           <span class="toast" id="toast" aria-live="polite"></span>
+        </div>
+        <div class="phones">
+          <a href="tel:+84865966279"><span class="label">Mobile</span><b>0865 966 279</b></a>
+          <a href="tel:+842633819988"><span class="label">Front desk</span><b>02633 819 988</b></a>
         </div>
         <figure class="ph"><img src="img/sign.jpg" alt="The Mr. Happy Homestay sign above the entrance on Hoàng Diệu street" loading="lazy"></figure>
         <p class="coords">Look for the green “Mr. Happy” sign · 11.9428° N, 108.4305° E</p>
