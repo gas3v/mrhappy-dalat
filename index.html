@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mr. Happy Homestay</title>
+<meta name="description" content="Mr. Happy Homestay — a friendly backpacker homestay in Da Lat, Vietnam, 700 m from the centre. Dorms and private rooms, family dinner every night, rooftop, karaoke, canyoning and bus tickets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: misty highland page, pine-ink type, one loud colour borrowed from the red-orange bunk frames. Asymmetric photo collages, left-aligned text. */
+:root{
+  --mist:#eef1ec;
+  --paper:#f8f9f5;
+  --pine:#16302a;
+  --moss:#4c615a;
+  --line:#d3dad3;
+  --bunk:#e8521c;
+  --bunk-ink:#ffffff;
+  --night:#16302a;
+  --night-fg:#eef1ec;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gutr:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --mist:#0f1c19;--paper:#152622;--pine:#e6ece6;--moss:#9db0a8;--line:#28403a;
+  --bunk:#ff6a2b;--bunk-ink:#140c08;--night:#0a1412;--night-fg:#e6ece6;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --mist:#0f1c19;--paper:#152622;--pine:#e6ece6;--moss:#9db0a8;--line:#28403a;
+  --bunk:#ff6a2b;--bunk-ink:#140c08;--night:#0a1412;--night-fg:#e6ece6;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--mist);color:var(--pine);font:400 17px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--mist)}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--bunk);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.02;letter-spacing:-.02em}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutr)}
+.label{font:500 12px/1.3 var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--moss)}
+.btn{display:inline-flex;align-items:center;gap:10px;font:600 16px/1 var(--f-body);text-decoration:none;padding:15px 22px;border-radius:999px;border:2px solid var(--pine);color:var(--pine);background:transparent;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--pine);color:var(--mist)}
+.btn.hot{background:var(--bunk);border-color:var(--bunk);color:var(--bunk-ink)}
+.btn.hot:hover{transform:translateY(-2px);background:var(--bunk);color:var(--bunk-ink)}
+.btn svg{width:18px;height:18px}
+.ph{margin:0;overflow:hidden;border-radius:6px;background:var(--line)}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--mist) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 20px/1 var(--f-display);letter-spacing:-.02em}
+.logo .dot{width:26px;height:26px;border-radius:50%;background:var(--bunk);display:grid;place-items:center}
+.logo .dot svg{width:16px;height:16px}
+nav.links{display:flex;gap:22px;margin-left:auto;font-weight:500;font-size:15px}
+nav.links a{text-decoration:none;color:var(--moss)}
+nav.links a:hover{color:var(--pine)}
+header .btn{padding:10px 16px;font-size:14px}
+@media (max-width:880px){nav.links{display:none}header .btn{margin-left:auto}}
+
+/* hero */
+.hero{padding-block:56px 48px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(52px,9vw,124px);font-weight:800;letter-spacing:-.045em;margin-top:18px}
+.hero h1 em{font-style:normal;color:var(--bunk)}
+.hero .lede{font-size:clamp(18px,2vw,21px);max-width:36ch;margin-top:24px;color:var(--moss)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.rating{display:flex;align-items:center;gap:12px;margin-top:28px;font-size:15px;color:var(--moss)}
+.rating b{font:800 28px/1 var(--f-display);color:var(--pine)}
+.collage{position:relative;aspect-ratio:1/1.05;max-width:100%}
+.collage figure{position:absolute;box-shadow:0 18px 40px -18px rgba(10,30,25,.45)}
+.c1{left:0;top:0;width:52%;height:72%}
+.c2{right:0;top:8%;width:46%;height:42%;transform:rotate(2deg)}
+.c3{right:3%;bottom:0;width:62%;height:44%;transform:rotate(-1.5deg)}
+.stamp{position:absolute;left:4%;bottom:4%;width:128px;height:128px;border-radius:50%;background:var(--bunk);color:var(--bunk-ink);display:grid;place-items:center;text-align:center;font:500 11px/1.25 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;transform:rotate(-10deg);z-index:2}
+.stamp b{display:block;font:800 28px/1 var(--f-display);letter-spacing:-.02em;text-transform:none;margin:4px 0}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:36px}.hero{padding-block:36px 32px}}
+
+/* facts strip */
+.facts{border-block:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.facts div{padding-block:22px;padding-inline:0 16px}
+.facts div+div{border-left:1px solid var(--line);padding-left:20px}
+.facts b{display:block;font:600 22px/1.15 var(--f-display);letter-spacing:-.01em;margin-top:6px;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.facts .wrap{grid-template-columns:1fr 1fr}.facts div:nth-child(3){border-left:0;padding-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
+
+section{padding-block:96px}
+@media (max-width:700px){section{padding-block:64px}}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:end;margin-bottom:44px}
+.head h2{font-size:clamp(38px,5.5vw,72px);font-weight:800;letter-spacing:-.035em;margin-top:14px}
+.head p{max-width:46ch;color:var(--moss)}
+@media (max-width:760px){.head{grid-template-columns:1fr;gap:16px}}
+
+/* rooms */
+.beds{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px}
+.beds .big{grid-row:span 2;min-height:420px}
+.beds .sm{aspect-ratio:4/3}
+.note{background:var(--bunk);color:var(--bunk-ink);border-radius:6px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-width:0}
+.note h3{font-size:28px;font-weight:800}
+.note ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-weight:500}
+.note li::before{content:"— "}
+.sub{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:72px 0 22px;padding-top:22px;border-top:1px solid var(--line)}
+.sub h3{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.03em}
+.sub p{color:var(--moss);max-width:52ch}
+.rooms{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.rooms figure{display:flex;flex-direction:column;gap:10px;margin:0;min-width:0}
+.rooms .ph{aspect-ratio:4/3}
+.rooms figcaption{font-size:15px;color:var(--moss)}
+.rooms figcaption b{display:block;color:var(--pine);font-weight:600;font-size:16px}
+@media (max-width:860px){.beds{grid-template-columns:1fr 1fr}.beds .big{grid-row:auto;grid-column:span 2;min-height:0;aspect-ratio:4/3}.rooms{grid-template-columns:1fr 1fr}}
+
+/* dinner */
+.dinner{background:var(--night);color:var(--night-fg)}
+.dinner .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.dinner .label{color:color-mix(in srgb,var(--night-fg) 65%,transparent)}
+.dinner h2{font-size:clamp(40px,6vw,84px);font-weight:800;letter-spacing:-.04em;margin-top:14px}
+.dinner h2 span{color:var(--bunk)}
+.dinner p{margin-top:22px;max-width:42ch;color:color-mix(in srgb,var(--night-fg) 82%,transparent);font-size:18px}
+.clock{display:flex;gap:28px;margin-top:32px;font:500 13px/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;flex-wrap:wrap}
+.clock b{display:block;font:800 32px/1 var(--f-display);letter-spacing:-.02em;text-transform:none;color:var(--bunk);margin-bottom:4px}
+.plates{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+.plates .wide{grid-column:span 2;aspect-ratio:16/9}
+.plates .sq{aspect-ratio:4/3}
+@media (max-width:860px){.dinner .wrap{grid-template-columns:1fr;gap:40px}}
+
+/* evenings */
+.eve{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.eve .a{grid-column:span 7;aspect-ratio:4/3}
+.eve .b{grid-column:span 5;display:grid;gap:14px;grid-template-rows:1fr 1fr}
+.eve .c{grid-column:span 5}
+.eve .d{grid-column:span 7;aspect-ratio:16/9}
+.eve .card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:0}
+.eve .card h3{font-size:30px;font-weight:800}
+.eve .card p{color:var(--moss)}
+@media (max-width:760px){.eve>*{grid-column:span 12!important}.eve .b{grid-template-rows:auto;grid-template-columns:1fr 1fr}.eve .b .ph{aspect-ratio:1}}
+
+/* host desk */
+.desk{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.svc{display:flex;flex-direction:column;gap:14px;min-width:0}
+.svc .ph{aspect-ratio:4/5;position:relative}
+.svc img{transition:transform .5s}
+.svc:hover img{transform:scale(1.04)}
+.svc .tag{position:absolute;left:12px;top:12px;background:var(--paper);color:var(--pine);font:500 11px/1 var(--f-mono);letter-spacing:.1em;text-transform:uppercase;padding:7px 9px;border-radius:999px}
+.svc h3{font-size:24px;font-weight:600}
+.svc p{color:var(--moss);font-size:16px}
+@media (max-width:960px){.desk{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.desk{grid-template-columns:1fr}.svc .ph{aspect-ratio:16/11}}
+.board{margin-top:48px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:clamp(22px,3vw,36px)}
+.board h3{font-size:26px;font-weight:800;max-width:10ch}
+.board ol{margin:0;padding:0;list-style:none;columns:3 200px;column-gap:28px;counter-reset:n}
+.board li{counter-increment:n;display:flex;gap:12px;padding-block:9px;border-bottom:1px dashed var(--line);break-inside:avoid;font-weight:500}
+.board li::before{content:counter(n,decimal-leading-zero);font:500 12px/1.9 var(--f-mono);color:var(--bunk);font-variant-numeric:tabular-nums}
+@media (max-width:700px){.board{grid-template-columns:1fr;gap:16px}}
+
+/* host */
+.host .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.host .ph{aspect-ratio:4/5}
+.host img{object-position:50% 30%}
+.host blockquote{margin:0;font:600 clamp(24px,3vw,38px)/1.18 var(--f-display);letter-spacing:-.02em;text-wrap:balance}
+.host blockquote::before{content:"“";display:block;color:var(--bunk);font-size:2.4em;line-height:.6;margin-bottom:8px}
+.host .sig{margin-top:24px;color:var(--moss)}
+.host .sig b{color:var(--pine);font-weight:600}
+@media (max-width:760px){.host .wrap{grid-template-columns:1fr;gap:32px}.host .ph{max-width:420px}}
+
+/* gallery */
+.gal{columns:4 220px;column-gap:12px}
+.gal button{all:unset;display:block;margin-bottom:12px;border-radius:6px;overflow:hidden;cursor:zoom-in;break-inside:avoid;width:100%;background:var(--line)}
+.gal button:focus-visible{outline:3px solid var(--bunk);outline-offset:2px}
+.gal img{width:100%;transition:opacity .2s}
+.gal button:hover img{opacity:.85}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(8,16,14,.94);display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb img{max-height:86vh;max-width:min(1200px,100%);border-radius:4px}
+.lb button{position:absolute;background:rgba(255,255,255,.14);color:#fff;border:0;width:48px;height:48px;border-radius:50%;font:400 22px/1 var(--f-body);cursor:pointer}
+.lb .x{top:calc(16px + env(safe-area-inset-top,0px));right:calc(16px + env(safe-area-inset-right,0px))}
+.lb .pv{left:calc(16px + env(safe-area-inset-left,0px));top:50%;transform:translateY(-50%)}
+.lb .nx{right:calc(16px + env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%)}
+
+/* find us */
+.find .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:clamp(24px,4vw,44px);min-width:0}
+.find h2{font-size:clamp(38px,5vw,64px);font-weight:800;letter-spacing:-.035em;margin:14px 0 26px}
+.addr{font:600 24px/1.3 var(--f-display);letter-spacing:-.01em}
+.addr small{display:block;font:400 16px/1.5 var(--f-body);color:var(--moss);margin-top:6px}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.coords{margin-top:16px;font:400 13px/1.6 var(--f-mono);color:var(--moss);font-variant-numeric:tabular-nums}
+.find .ph{margin-top:28px;aspect-ratio:16/9}
+.book h3{font-size:30px;font-weight:800;margin:14px 0 8px}
+.book p{color:var(--moss)}
+.book ul{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:10px}
+.book a.plat{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;padding:18px 20px;border:1px solid var(--line);border-radius:6px;font-weight:600;transition:border-color .2s,background .2s}
+.book a.plat:hover{border-color:var(--bunk);background:color-mix(in srgb,var(--bunk) 8%,transparent)}
+.book a.plat span{font:400 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--moss)}
+.book .front{margin-top:24px;aspect-ratio:3/4;max-height:420px}
+@media (max-width:860px){.find .wrap{grid-template-columns:1fr}}
+.toast{font:500 13px/1 var(--f-mono);color:var(--bunk);align-self:center}
+
+footer{padding-block:40px 48px;border-top:1px solid var(--line);color:var(--moss);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer .logo{color:var(--pine)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Mr. Happy Homestay, back to top">
+      <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M7 14c1.4 2 3 3 5 3s3.6-1 5-3"/><path d="M8.5 9v1M15.5 9v1"/></svg></span>
+      Mr.&nbsp;Happy
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#rooms">Rooms</a>
+      <a href="#dinner">Family dinner</a>
+      <a href="#evenings">Rooftop</a>
+      <a href="#desk">Tours &amp; tickets</a>
+      <a href="#photos">Photos</a>
+      <a href="#find">Find us</a>
+    </nav>
+    <a class="btn hot" href="#find">Book a bed</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label">Homestay · Đà Lạt, Vietnam</p>
+        <h1>Mr.&nbsp;Happy <em>Homestay</em></h1>
+        <p class="lede">Xin chào! A friendly home for backpackers and explorers, 700 metres from the centre of Da Lat. Comfy beds, dinner with the family every night, a rooftop to chill on and a host who knows where the waterfalls are.</p>
+        <div class="cta">
+          <a class="btn hot" href="#find">
+            Book a bed
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn" href="#rooms">See the rooms</a>
+        </div>
+        <p class="rating"><b>8.9</b> Fabulous · 489 guest reviews on Hostelworld</p>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <figure class="ph c1"><img src="img/front.jpg" alt=""></figure>
+        <figure class="ph c2"><img src="img/bunks2.jpg" alt=""></figure>
+        <figure class="ph c3"><img src="img/dinner2.jpg" alt=""></figure>
+        <div class="stamp"><div>Family<b>dinner</b>every night</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="wrap">
+      <div><span class="label">Address</span><b>4 Hoàng Diệu, Đà Lạt</b></div>
+      <div><span class="label">To the centre</span><b>700 m on foot</b></div>
+      <div><span class="label">Altitude</span><b>1,500 m</b></div>
+      <div><span class="label">Running hostels</span><b>10 years</b></div>
+    </div>
+  </div>
+
+  <section id="rooms">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">Where you sleep</p>
+          <h2>Dorms &amp; private rooms</h2>
+        </div>
+        <p>Sturdy bunks with a curtain around every bed, plus bright private rooms for couples, friends and families. Clean linen, warm blankets and Wi-Fi everywhere.</p>
+      </div>
+      <div class="beds">
+        <figure class="ph big"><img src="img/bunks.jpg" alt="Dorm room with red bunk beds, grey curtains and lockers"></figure>
+        <figure class="ph sm"><img src="img/bunks2.jpg" alt="Numbered bunk beds with privacy curtains"></figure>
+        <figure class="ph sm"><img src="img/bunk-curtain.jpg" alt="Bunk curtains closed for privacy"></figure>
+        <div class="note" style="grid-column:span 2">
+          <h3>Every dorm bed comes with</h3>
+          <ul>
+            <li>Privacy curtain</li>
+            <li>Locker for your valuables</li>
+            <li>Fresh linen &amp; warm blanket</li>
+            <li>Free Wi-Fi</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub">
+        <h3>Private rooms</h3>
+        <p>Double, twin and family rooms, each painted its own colour. Some have an en-suite bathroom.</p>
+      </div>
+      <div class="rooms">
+        <figure><div class="ph"><img src="img/room-blue.jpg" alt="Room with a blue wall and two beds" loading="lazy"></div><figcaption><b>Blue room</b>Two beds, wardrobe</figcaption></figure>
+        <figure><div class="ph"><img src="img/room-twin.jpg" alt="Green twin room with armchairs and en-suite bathroom" loading="lazy"></div><figcaption><b>Green twin</b>Two beds, en-suite</figcaption></figure>
+        <figure><div class="ph"><img src="img/room-double.jpg" alt="Double bed next to a large window" loading="lazy"></div><figcaption><b>Window double</b>Big bed, lots of light</figcaption></figure>
+        <figure><div class="ph"><img src="img/bath.jpg" alt="Tiled bathroom with walk-in shower" loading="lazy"></div><figcaption><b>Bathrooms</b>Hot shower, clean tiles</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="dinner" id="dinner">
+    <div class="wrap">
+      <div>
+        <p class="label">The best part of the day</p>
+        <h2>One table.<br><span>Everyone eats.</span></h2>
+        <p>Every evening we cook together and sit down as one big family. Classic Vietnamese recipes, plenty of food and new friends from all over the world. Most guests say this is what they remember about Da Lat.</p>
+        <div class="clock">
+          <div><b>Every</b>night</div>
+          <div><b>Home</b>cooked</div>
+          <div><b>All</b>guests welcome</div>
+        </div>
+      </div>
+      <div class="plates">
+        <figure class="ph wide"><img src="img/dinner1.jpg" alt="Long table of guests sharing a family dinner" loading="lazy"></figure>
+        <figure class="ph sq"><img src="img/dinner2.jpg" alt="Smiling guests around a dinner table full of dishes" loading="lazy"></figure>
+        <figure class="ph sq"><img src="img/dinner4.jpg" alt="Friends raising glasses over a hotpot" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="evenings">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">After dinner</p>
+          <h2>Rooftop, drinks &amp; karaoke</h2>
+        </div>
+        <p>Grab a drink on the rooftop terrace and watch the lights of Da Lat come on. Later, someone always finds the karaoke microphone.</p>
+      </div>
+      <div class="eve">
+        <figure class="ph a"><img src="img/rooftop.jpg" alt="Rooftop terrace with plants, tables and a view over Da Lat" loading="lazy"></figure>
+        <div class="b">
+          <figure class="ph"><img src="img/roof-bar.jpg" alt="Bar stools at the rooftop counter facing the city" loading="lazy"></figure>
+          <figure class="ph"><img src="img/karaoke.jpg" alt="Guests singing karaoke in the lounge" loading="lazy"></figure>
+        </div>
+        <div class="card c">
+          <h3>Sing with us</h3>
+          <p>The lounge has a karaoke set, flags from every guest’s country and a sofa for those who only clap.</p>
+        </div>
+        <figure class="ph d"><img src="img/karaoke2.jpg" alt="Guests dancing under colourful flags" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="desk" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">Ask at the front desk</p>
+          <h2>We’ll sort out the rest</h2>
+        </div>
+        <p>Tell us what you want to see and we’ll arrange it. We book with people we trust and can explain every option over breakfast.</p>
+      </div>
+      <div class="desk">
+        <article class="svc">
+          <figure class="ph"><img src="img/canyoning.jpg" alt="A climber abseiling down a waterfall" loading="lazy"><span class="tag">Full day</span></figure>
+          <h3>Canyoning</h3>
+          <p>Abseil, slide and jump your way down the waterfalls. The most popular adventure in Da Lat.</p>
+        </article>
+        <article class="svc">
+          <figure class="ph"><img src="img/countryside.jpg" alt="Two travellers with bicycles in a rice field" loading="lazy"><span class="tag">By bike or car</span></figure>
+          <h3>Easy Rider &amp; countryside</h3>
+          <p>Coffee farms, flower villages and mountain roads on the back of a local rider’s motorbike, or by car.</p>
+        </article>
+        <article class="svc">
+          <figure class="ph"><img src="img/motorbike.jpg" alt="A man and child on a motorbike" style="object-position:60% 50%" loading="lazy"><span class="tag">By the day</span></figure>
+          <h3>Motorbike rental</h3>
+          <p>Rent a bike at the door and get our favourite routes, marked on your map.</p>
+        </article>
+        <article class="svc">
+          <figure class="ph"><img src="img/bus.jpg" alt="An intercity sleeper bus" loading="lazy"><span class="tag">All of Vietnam</span></figure>
+          <h3>Bus tickets</h3>
+          <p>Sleeper buses to Saigon, Nha Trang, Hoi An, Mui Ne and beyond. We book it, you just get on.</p>
+        </article>
+      </div>
+      <div class="board">
+        <h3>What do we have?</h3>
+        <ol>
+          <li>Tour information</li>
+          <li>Bus tickets</li>
+          <li>Cooking class</li>
+          <li>Laundry</li>
+          <li>Motorbike for rent</li>
+          <li>Family dinner</li>
+          <li>Drinks &amp; food</li>
+          <li>Flight tickets</li>
+          <li>Visa extension</li>
+          <li>Train tickets</li>
+          <li>Airport transport</li>
+          <li>Hiking tours</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="host" style="padding-top:0">
+    <div class="wrap">
+      <figure class="ph"><img src="img/mr-happy.jpg" alt="Mr. Happy, the host, at the dinner table" loading="lazy"></figure>
+      <div>
+        <p class="label" style="margin-bottom:22px">About your host</p>
+        <blockquote>With 10 years of running our hostels, we have welcomed many, many people and made unforgettable memories. We love to treat everyone like our own family.</blockquote>
+        <p class="sig"><b>Mr. Happy</b> · from Da Lat, Vietnam</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="label">Have a look around</p>
+          <h2>Photos</h2>
+        </div>
+        <p>Rooms, dinners, the rooftop and the street outside. Tap any photo to open it.</p>
+      </div>
+      <div class="gal" id="gal"></div>
+    </div>
+  </section>
+
+  <section class="find" id="find" style="padding-top:0">
+    <div class="wrap">
+      <div class="card">
+        <p class="label">Find us</p>
+        <h2>Come say hello</h2>
+        <p class="addr">4 Hoàng Diệu, Phường 5<small>Đà Lạt, Lâm Đồng, Vietnam · 700 m from the centre, close to the night market, Xuan Huong Lake, Crazy House and Maze Bar</small></p>
+        <div class="row">
+          <a class="btn hot" href="https://maps.app.goo.gl/LfopsT9r4URaAVhV9" target="_blank" rel="noopener">
+            Open in Google Maps
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <button class="btn" id="copy" type="button">Copy address</button>
+          <span class="toast" id="toast" aria-live="polite"></span>
+        </div>
+        <figure class="ph"><img src="img/sign.jpg" alt="The Mr. Happy Homestay sign above the entrance on Hoàng Diệu street" loading="lazy"></figure>
+        <p class="coords">Look for the green “Mr. Happy” sign · 11.9428° N, 108.4305° E</p>
+      </div>
+      <div class="card book">
+        <p class="label">Book a bed</p>
+        <h3>Check dates &amp; prices</h3>
+        <p>See availability, prices and guest reviews, then book in a minute.</p>
+        <ul>
+          <li><a class="plat" href="https://www.hostelworld.com/hostels/p/283886/da-lat-mr-happy-homestay/" target="_blank" rel="noopener">Hostelworld <span>8.9 · 489 reviews →</span></a></li>
+          <li><a class="plat" href="https://www.google.com/travel/hotels/entity/ChkI5baVyZKXlLZjGg0vZy8xMWM3dDQ1c3FrEAE" target="_blank" rel="noopener">Google <span>Compare prices →</span></a></li>
+        </ul>
+        <figure class="ph front"><img src="img/front.jpg" alt="Front of Mr. Happy Homestay with the green sign and steps" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M7 14c1.4 2 3 3 5 3s3.6-1 5-3"/><path d="M8.5 9v1M15.5 9v1"/></svg></span>Mr.&nbsp;Happy Homestay</a>
+    <span>4 Hoàng Diệu, Phường 5, Đà Lạt · See you at dinner.</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="lbimg" alt="">
+  <button class="x" id="lbx" type="button" aria-label="Close">✕</button>
+  <button class="pv" id="lbp" type="button" aria-label="Previous photo">←</button>
+  <button class="nx" id="lbn" type="button" aria-label="Next photo">→</button>
+</div>
+
+<script>
+const photos=[
+  ["front","Front of the homestay"],["bunks","Dorm with bunk beds"],["dinner3","Family dinner"],
+  ["room-green","Green room with a double bed"],["rooftop","Rooftop terrace"],["street","Evening at the front door"],
+  ["room-quad","Room with two double beds"],["lobby","The lobby at Christmas"],["xmas","Guests at the bar"],
+  ["room-light","Bright room with a balcony door"],["cafe","Café corner downstairs"],["room-green2","Green double room"],
+  ["birthday","Birthday cake in the dorm"],["room-twin2","Twin room"],["room-sofa","Room with a sofa"],
+  ["dinner4","Hotpot night"],["karaoke2","Karaoke night"],["sign","The sign on Hoàng Diệu street"]
+];
+const gal=document.getElementById('gal'),lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg');
+let cur=0,last=null;
+photos.forEach(([f,a],i)=>{
+  const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Open photo: '+a);
+  b.innerHTML=`<img src="img/${f}.jpg" alt="${a}" loading="lazy">`;
+  b.onclick=()=>{last=b;show(i)};gal.appendChild(b);
+});
+function show(i){cur=(i+photos.length)%photos.length;lbimg.src=`img/${photos[cur][0]}.jpg`;lbimg.alt=photos[cur][1];lb.hidden=false;document.getElementById('lbx').focus()}
+function close(){lb.hidden=true;last&&last.focus()}
+document.getElementById('lbx').onclick=close;
+document.getElementById('lbp').onclick=()=>show(cur-1);
+document.getElementById('lbn').onclick=()=>show(cur+1);
+lb.addEventListener('click',e=>{if(e.target===lb)close()});
+document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1)});
+
+const addr='4 Hoàng Diệu, Phường 5, Đà Lạt, Lâm Đồng, Vietnam',toast=document.getElementById('toast');
+document.getElementById('copy').addEventListener('click',()=>{
+  const done=()=>{toast.textContent='Copied';setTimeout(()=>toast.textContent='',2000)};
+  navigator.clipboard.writeText(addr).then(done).catch(()=>{toast.textContent=addr});
+});
+</script>
+</body>
+</html>
